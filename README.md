@@ -2,9 +2,13 @@
 
 # CodeMirror Tool for Editor.js
 
-Code Tool for the [Editor.js](https://ifmo.su/editor) allows to include code examples in your articles.
+Code Mirror for the [Editor.js](https://ifmo.su/editor) allows to include code examples in your articles.
 
 ![image-20200219214508250](assets/image-20200219214508250.png)
+
+## Know Bugs
+
+* On focus, when cursor is blinking, the ediitor always activate event  'OnChange'.
 
 ## Installation
 
@@ -12,18 +16,12 @@ Code Tool for the [Editor.js](https://ifmo.su/editor) allows to include code exa
 
 **TODO:**
 
-
-
 ###  Download to your project's source dir
 
 1. Upload folder `dist` from repository
 2. Add `dist/bundle.js` file to your page.
 
-### Load from CDN
-
-You can load specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/@editorjs/code).
-
-`https://cdn.jsdelivr.net/npm/@editorjs/code@2.0.0`
+### Load from source
 
 Require this script on a page with Editor.js.
 
@@ -41,7 +39,7 @@ var editor = EditorJS({
   
   tools: {
     ...
-    code: CodeTool,
+    code: CodeMirror,
   }
   
   ...
