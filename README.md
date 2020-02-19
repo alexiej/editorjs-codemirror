@@ -1,28 +1,20 @@
 ![](https://badgen.net/badge/Editor.js/v2.0/blue)
 
-# Code Tool for Editor.js
+# CodeMirror Tool for Editor.js
 
 Code Tool for the [Editor.js](https://ifmo.su/editor) allows to include code examples in your articles.
 
-![](https://capella.pics/8df022f5-b4d5-4d30-a527-2a0efb63f291.jpg)
+![image-20200219214508250](assets/image-20200219214508250.png)
 
 ## Installation
 
 ### Install via NPM
 
-Get the package
+**TODO:**
 
-```shell
-npm i --save-dev @editorjs/code
-```
 
-Include module at your application
 
-```javascript
-const CodeTool = require('@editorjs/code');
-```
-
-### Download to your project's source dir
+###  Download to your project's source dir
 
 1. Upload folder `dist` from repository
 2. Add `dist/bundle.js` file to your page.
