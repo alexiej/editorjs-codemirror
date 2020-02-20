@@ -4,7 +4,7 @@
 
 Code Tool for the [Editor.js](https://ifmo.su/editor) allows to include code examples in your articles.
 
-![image-20200219214508250](assets/image-20200219214508250.png)
+![image-20200219214508250](assets/image-20200219214508250.png) [README.md](README.md) 
 
 ## Installation
 

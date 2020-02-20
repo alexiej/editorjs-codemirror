@@ -41,7 +41,6 @@ const LANGUAES = {
   'XML': 'xmls'
 }
 
-// require('./codemirror.css').toString()
 class CodeMirror {
   static get toolbox () {
     return {
@@ -100,6 +99,7 @@ class CodeMirror {
   }
 
   appendCallback () {
+    // console.log('append callback')
     codemirror = this.codemirror
     setTimeout(async function() {
       codemirror.focus()
@@ -112,9 +112,8 @@ class CodeMirror {
     const container = this._make('div', [this.CSS.wrapper, this.CSS.baseClass], {})
     const text = this._make('textarea', [this.CSS.input, this.CSS.textarea], {
       contentEditable: false,
-      innerHTML: 'var a = 3; class'
+      innerHTML: this.data.text
     })
-    // console.log(CodeMirror.fromTextArea, text)
 
     const selectwrapper = this._make('div', this.CSS.input)
     const language = this._make('select', this.CSS.language)
@@ -149,7 +148,7 @@ class CodeMirror {
       foldGutter: true,
       autofocus: false,
       styleSelectedText: true,
-      mode: this.data.language.toLowerCase(),
+      mode: LANGUAES[this.data.language].toLowerCase(),
       matchBrackets: true,
       showCursorWhenSelecting: true,
       theme: 'dracula',
@@ -168,27 +167,18 @@ class CodeMirror {
     this.codemirror.refresh()
 
 
-    // function updateValue(e) {
-    //   console.log(["inner change"])
-    // }
-    // console.log(codemirror.display.input.textarea)
-    // codemirror.display.input.textarea.addEventListener('input', updateValue);
-    // text.addEventListener('input', updateValue);
-    // language.addEventListener('input', updateValue);
+    setTimeout(async function() {
+      codemirror.focus()
+      codemirror.setCursor(codemirror.lineCount(),0)
+      codemirror.refresh()
+    },100);
+
 
     language.onchange = function(e) {
       codemirror.setOption("mode", LANGUAES[e.target.value].toLowerCase());
     }
+    this.language = language
 
-    this.codemirror.on("change", function() {
-      console.log('code changed')
-    })
-
-    // console.log(this.codemirror)
-    // code.focus()
-    // code.setCursor({line: 1, ch: 5})
-    // code.refresh()
-    // code.triggerOnKeyPress('a')
     return container
   }
 
@@ -200,14 +190,9 @@ class CodeMirror {
   }
 
   save (codeElement) {
-    // const text = codeElement.querySelector(`.${this.CSS.textarea}`)
-    // const language = codeElement.querySelector(`.${this.CSS.language}`)
-    // let index = language.selectedIndex
-    // console.log(this.codemirror)
-
     return Object.assign(this.data, {
-      text: 'Text',
-      language: 'javascript' // language.options[index].value
+      text: this.codemirror.getValue(),
+      language: this.language.value
     })
   }
 
